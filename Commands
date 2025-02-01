@@ -1,0 +1,13 @@
+Pass varibales values at run time
+
+ansible-playbook -i hosts playbook.yml --extra-vars '{"version":"1.0"}'
+
+Here in the above version varibae is defined in playbook.yml file but value is not present in vars.yml file
+
+-> we can specify multiple var files in playbook.yml file
+-> Note ansible give high priority to run time variables example:- if version value is already present in vars.yml file but you passed different value at run time for version it will take run time varibale only.
+
+
+we can pass variables file at run time like below
+
+ansible-playbook -i hosts playbook.yml --extra-vars '@other_vars.yml'
