@@ -1,0 +1,30 @@
+---
+string_var: "Hello, Ansible!"  # String variable
+boolean_var: true              # Boolean variable
+list_var:                      # List variable
+  - Apple
+  - Banana
+  - Cherry
+dict_var:                      # Dictionary variable
+  name: "John Doe"
+  age: 30
+  city: "New York"
+
+
+fruit_prices:
+  mango: 30
+  banana: 40
+  orange: 50
+  avacado: 150  
+
+# nested variables
+
+fruit_basket:
+  - name: ram
+    fruits:
+      - mango
+      - banana
+  - name: bheem
+    fruits:
+      - orange
+      - avacado    

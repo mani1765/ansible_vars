@@ -1,0 +1,69 @@
+---
+- name: Demonstrate Variable Types in Ansible
+  hosts: webserver
+  gather_facts: no
+  vars_files:
+    - vars.yml
+    - other_vars.yml  
+
+  tasks:
+    - name: Display String Variable
+      debug:
+        msg: "String Value: {{ string_var }}"
+
+    - name: Display Boolean Variable
+      debug:
+        msg: "Boolean Value: {{ boolean_var }}"
+
+    - name: Display List Variable
+      debug:
+        msg: "List Values: {{ list_var }}"
+
+    - name: Loop Through List Variable
+      debug:
+        msg: "Item: {{ item }}"
+      loop: "{{ list_var }}"
+
+    - name: Display Dictionary Variable
+      debug:
+        msg: "Dictionary Values: {{ dict_var }}"
+
+    - name: Access Specific Dictionary Key
+      debug:
+        msg: "Name: {{ dict_var.name }}, Age: {{ dict_var.age }}, City: {{ dict_var.city }}"
+
+    - name: Loop Through List Variable
+      debug:
+        msg: "{{list_var[0]}}"
+
+    - name : Get the age of the person      
+      command : echo "{{dict_var.age}}"
+      register: person_age
+
+    - name : Print the value of person age
+      debug:
+        var: person_age.stdout           
+
+    - name : Get the value of mango from nested list
+      debug:
+        var: "{{fruit_prices[fruit_basket[0].fruits[0]]}}"
+
+    - name : Use jinja2 filters on variables
+      debug: 
+        var: fruit_prices.keys() | list | map('upper') | list      
+
+    - name : Use run-time varibales
+      debug:
+        var: version
+    - name : passsing var file at run time
+      debug:
+        var: var1
+
+
+
+
+
+
+
+
+
